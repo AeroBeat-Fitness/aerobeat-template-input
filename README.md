@@ -22,7 +22,7 @@ This template stays intentionally bounded to the input-driver contract itself. I
 *   **License:** **Mozilla Public License 2.0 (MPL 2.0)**
 *   **Current baseline dependencies:**
     *   `aerobeat-input-core` (Canonical shared input contract)
-    *   `gut` (Repo-local validation)
+    *   `aerobeat-vendor-godot-unit-test` (Repo-local validation)
 *   **Optional additions:**
     *   `aerobeat-vendor-*` or device-specific support packages when the concrete driver actually needs them
 
@@ -72,7 +72,7 @@ godot --headless --path .testbed --import
 From the repo root:
 
 ```bash
-godot --headless --path .testbed --script addons/gut/gut_cmdln.gd \
+godot --headless --path .testbed --script addons/aerobeat-vendor-godot-unit-test/gut_cmdln.gd \
   -gdir=res://tests \
   -ginclude_subdirs \
   -gexit
@@ -81,7 +81,7 @@ godot --headless --path .testbed --script addons/gut/gut_cmdln.gd \
 ### Validation notes
 
 - `.testbed/addons.jsonc` is the committed dev/test dependency contract.
-- The current template baseline intentionally pins only the lane-scoped shared contract needed for generic input-driver work: `aerobeat-input-core@v0.1.0` plus GUT `main`.
+- The current template baseline intentionally pins only the lane-scoped shared contract needed for generic input-driver work: `aerobeat-input-core@v0.1.0` plus `aerobeat-vendor-godot-unit-test` via the shared local sibling manifest.
 - Repo-local unit tests live under `.testbed/tests/`; this repo's current package payload is rooted at `/`, so the workbench does not ship a `.testbed/src` bridge for this subset.
 - The current package shape is consumed from the repo root (`subfolder: "/"`) for downstream installs.
 - Keep product wording truthful: the template may be reused for future/non-camera drivers, but official v1 gameplay input remains camera-only.
